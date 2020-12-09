@@ -14,9 +14,11 @@
 #' @references \url{https://github.com/hrbrmstr/slackr/pull/15/files}
 #' @seealso \code{\link{slackr_setup}}, \code{\link{dev_slackr}}, \code{\link{save_slackr}}
 #' @export
-slackr_upload <- function(filename, title=basename(filename),
+slackr_upload <- function(filename, 
+                          title=basename(filename),
                           initial_comment=basename(filename),
-                          main_channel=Sys.getenv("SLACK_CHANNEL"), bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
+                          main_channel=Sys.getenv("SLACK_CHANNEL"), 
+                          bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
 
   f_path <- path.expand(filename)
 
@@ -32,9 +34,10 @@ slackr_upload <- function(filename, title=basename(filename),
                       httr::add_headers(`Content-Type`="multipart/form-data"),
                       body=list(file=httr::upload_file(f_path), 
                                 filename=f_name,
-                                title=title, initial_comment=initial_comment,
+                                title=title, 
+                                initial_comment=initial_comment,
                                 token=bot_user_oauth_token, 
-                                channel=main_channel))
+                                channels=main_channel))
 
     return(invisible(res))
 
