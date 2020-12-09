@@ -28,7 +28,7 @@
 #' }
 #' @export
 ggslackr <- function(plot=last_plot(),
-                     channels=Sys.getenv("SLACK_CHANNEL"),
+                     main_channel=Sys.getenv("SLACK_CHANNEL"),
                      scale=1,
                      width=par("din")[1],
                      height=par("din")[2],
@@ -54,13 +54,11 @@ ggslackr <- function(plot=last_plot(),
          limitsize=limitsize,
          ... = ...)
 
-  modchan <- slackr_chtrans(channels)
-
   res <- POST(url="https://slack.com/api/files.upload",
               add_headers(`Content-Type`="multipart/form-data"),
               body=list(file=upload_file(ftmp),
                         token=bot_user_oauth_token,
-                        channels=modchan))
+                        channel=main_channel))
 
   invisible(res)
 
