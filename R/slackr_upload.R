@@ -30,9 +30,11 @@ slackr_upload <- function(filename, title=basename(filename),
 
     res <- httr::POST(url="https://slack.com/api/files.upload",
                       httr::add_headers(`Content-Type`="multipart/form-data"),
-                      body=list( file=httr::upload_file(f_path), filename=f_name,
-                                 title=title, initial_comment=initial_comment,
-                                 token=bot_user_oauth_token, channel=main_channel)))
+                      body=list(file=httr::upload_file(f_path), 
+                                filename=f_name,
+                                title=title, initial_comment=initial_comment,
+                                token=bot_user_oauth_token, 
+                                channel=main_channel))
 
     return(invisible(res))
 
