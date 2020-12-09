@@ -29,7 +29,7 @@
 #' }
 #' @export
 slackr <- function(...,
-                   channel=Sys.getenv("SLACK_CHANNEL"),
+                   main_channel=Sys.getenv("SLACK_CHANNEL"),
                    username=Sys.getenv("SLACK_USERNAME"),
                    icon_emoji=Sys.getenv("SLACK_ICON_EMOJI"),
                    bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
@@ -108,7 +108,7 @@ slackr <- function(...,
 
     resp <- POST(url="https://slack.com/api/chat.postMessage",
                  body=list(token=bot_user_oauth_token,
-                           channel=slackr_chtrans(channel),
+                           channel=main_channel,
                            username=username,
                            icon_emoji=icon_emoji,
                            as_user=TRUE,
