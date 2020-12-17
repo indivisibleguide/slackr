@@ -43,8 +43,8 @@
 #' }
 #' @export
 slackr_bot <- function(...,
-                       channel=Sys.getenv("SLACK_CHANNEL"),
-                       username=Sys.getenv("SLACK_USERNAME"),
+                       channel="#list-pulling",
+                       username="good_news",
                        icon_emoji=Sys.getenv("SLACK_ICON_EMOJI"),
                        incoming_webhook_url=Sys.getenv("SLACK_INCOMING_URL_PREFIX")) {
 

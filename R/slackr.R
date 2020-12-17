@@ -9,7 +9,7 @@
 #' but it's probably better to call \code{\link{slackr_setup}} first.
 #'
 #' @param ... expressions to be sent to Slack
-#' @param channel which channel to post the message to (chr)
+#' @param main_channel which channel to post the message to (chr)
 #' @param username what user should the bot be named as (chr)
 #' @param icon_emoji what emoji to use (chr) \code{""} will mean use the default
 #' @param bot_user_oauth_token Slack bot user OAuth token
@@ -29,8 +29,8 @@
 #' }
 #' @export
 slackr <- function(...,
-                   main_channel=Sys.getenv("SLACK_CHANNEL"),
-                   username=Sys.getenv("SLACK_USERNAME"),
+                   main_channel="#list-pulling",
+                   username="good_news",
                    icon_emoji=Sys.getenv("SLACK_ICON_EMOJI"),
                    bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
 
@@ -135,7 +135,7 @@ slackr <- function(...,
 #'
 #' @param txt text message to send to Slack. If a character vector of length > 1
 #'        is passed in, they will be combined and separated by newlines.
-#' @param channel which channel to post the message to (chr)
+#' @param main_channel which channel to post the message to (chr)
 #' @param username what user should the bot be named as (chr)
 #' @param icon_emoji what emoji to use (chr) \code{""} will mean use the default
 #' @param bot_user_oauth_token Slack bot user OAuth token
@@ -154,8 +154,8 @@ slackr <- function(...,
 #' }
 #' @export
 slackr_msg <- function(txt="",
-                       main_channel=Sys.getenv("SLACK_CHANNEL"),
-                       username=Sys.getenv("SLACK_USERNAME"),
+                       main_channel="#list-pulling",
+                       username="good_news",
                        icon_emoji=Sys.getenv("SLACK_ICON_EMOJI"),
                        bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN"),
                        ...) {

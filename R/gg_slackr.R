@@ -4,7 +4,7 @@
 #' eliminating the need to have a graphics device (think use in scripts).
 #'
 #' @param plot ggplot object to save, defaults to last plot displayed
-#' @param channels list of channels to post image to
+#' @param main_channel list of channels to post image to
 #' @param scale scaling factor
 #' @param width width (defaults to the width of current plotting window)
 #' @param height height (defaults to the height of current plotting window)
@@ -28,7 +28,7 @@
 #' }
 #' @export
 ggslackr <- function(plot=last_plot(),
-                     main_channel=Sys.getenv("SLACK_CHANNEL"),
+                     main_channel="#list-pulling",
                      scale=1,
                      width=par("din")[1],
                      height=par("din")[2],

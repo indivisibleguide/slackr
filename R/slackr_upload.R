@@ -7,7 +7,7 @@
 #' @param filename path to file
 #' @param title title on Slack (optional - defaults to filename)
 #' @param initial_comment comment for file on slack (optional - defaults to filename)
-#' @param channels Slack channels to save to (optional)
+#' @param main_channel Slack channels to save to (optional)
 #' @param bot_user_oauth_token Slack bot user OAuth token
 #' @return \code{httr} response object from \code{POST} call (invisibly)
 #' @author Quinn Weber [ctb], Bob Rudis [aut]
@@ -17,7 +17,7 @@
 slackr_upload <- function(filename, 
                           title=basename(filename),
                           initial_comment=basename(filename),
-                          main_channel=Sys.getenv("SLACK_CHANNEL"), 
+                          main_channel="#list-pulling", 
                           bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
 
   f_path <- path.expand(filename)

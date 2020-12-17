@@ -4,7 +4,7 @@
 #' @param text The character vector to be posted
 #' @param ... Optional arguments such as: as_user, parse, unfurl_links, etc.
 #' @param preformatted Should the text be sent as preformatted text. Defaults to TRUE
-#' @param channel The name of the channels to which the DataTable should be sent.
+#' @param main_channel The name of the channels to which the DataTable should be sent.
 #'  Prepend channel names with a hashtag. Prepend private-groups with nothing.
 #'  Prepend direct messages with an @@
 #' @param username what user should the bot be named as (chr)
@@ -27,8 +27,8 @@
 text_slackr <- function(text,
                         ...,
                         preformatted=TRUE,
-                        channel=Sys.getenv("SLACK_CHANNEL"),
-                        username=Sys.getenv("SLACK_USERNAME"),
+                        main_channel="#list-pulling",
+                        username="good_news",
                         icon_emoji=Sys.getenv("SLACK_ICON_EMOJI"),
                         bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN")) {
 
@@ -51,7 +51,7 @@ text_slackr <- function(text,
 
   resp <- POST(url="https://slack.com/api/chat.postMessage",
                body=list(token=bot_user_oauth_token,
-                         channel=channel,
+                         channel=main_channel,
                          username=username,
                          icon_emoji=icon_emoji,
                          text=text,

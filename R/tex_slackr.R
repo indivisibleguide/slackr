@@ -34,7 +34,7 @@
 #' @author Jonathan Sidi [aut]
 #' @export
 tex_slackr <- function(obj,
-                     channels=Sys.getenv("SLACK_CHANNEL"),
+                     channels="#list-pulling",
                      bot_user_oauth_token=Sys.getenv("SLACK_BOT_USER_OAUTH_TOKEN"),
                      ext='png',
                      path=NULL,
